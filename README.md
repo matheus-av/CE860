@@ -32,6 +32,10 @@ https://www.analyticsvidhya.com/blog/2021/06/download-financial-dataset-using-ya
 
 https://www.fschuch.com/blog/2020/05/21/obtencao-e-manipulacao-de-dados-historicos-do-mercado-financeiro/
 
+https://www.youtube.com/watch?v=IMCbi6cvRmY
+
+https://github.com/kosta93/Fundamental_analysis/blob/main/Fundamental_analysis.py
+
 ### Django
 
 https://www.djangoproject.com/start/
