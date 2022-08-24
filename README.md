@@ -10,6 +10,16 @@ Repositório teste para o projeto da disciplina CE860
 - [ ] Implementar classe(s) para coleta de dados
 - [ ] Implementar layout
 
+## Sugestões
+
+### 24-08:
+
+- cotações de ações b3 e news
+- bolsas mais importantes do  mundo
+- cotação dólar, btc, eth
+- Fear and Greed Index
+- API Wall St Market Cycle
+
 ## Links
 
 ### Git / Github
