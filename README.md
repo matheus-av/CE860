@@ -22,6 +22,18 @@ Repositório teste para o projeto da disciplina CE860
 
 ## Links
 
+### Dash
+
+https://www.datacamp.com/tutorial/learn-build-dash-python
+
+https://dash.plotly.com/
+
+https://realpython.com/python-dash/
+
+https://medium.com/plotly/introducing-dash-5ecf7191b503
+
+https://www.hashtagtreinamentos.com/dashboards-em-python
+
 ### Git / Github
 
 https://www.youtube.com/watch?v=kB5e-gTAl_s
