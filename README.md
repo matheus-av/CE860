@@ -10,4 +10,4 @@ Repositório para o projeto da disciplina CE860
 - [x] Módulo de vendas
 - [ ] Módulo de relatórios
 - [x] Módulo de validações
-- [ ] Módulo de interface
+- [x] Módulos de interface
