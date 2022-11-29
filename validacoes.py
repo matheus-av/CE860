@@ -72,5 +72,3 @@ def skusValidos(skus):
             print('Erro: SKU não existente')
             return False
     return True
-
-print(skusValidos('123456'))

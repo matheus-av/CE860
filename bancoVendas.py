@@ -1,6 +1,6 @@
 import sqlite3
 from datetime import date
-def cadastrarVenda(codVenda: int,cpfCliente: int,data:date,skus : str, quantidades: str):
+def cadastrarVenda(codVenda: int,cpfCliente: str,data:date,skus : str, quantidades: str):
     listaQuantidades=quantidades.split(',')
     listaSkus = skus.split(',')
     listaQuantidades=[int(q) for q in listaQuantidades]
@@ -10,7 +10,7 @@ def cadastrarVenda(codVenda: int,cpfCliente: int,data:date,skus : str, quantidad
     cursor = connection.cursor()
     firstSqlString=f"""INSERT INTO Vendas (codVenda,cpfCliente,data)
     values
-    ({codVenda},{cpfCliente},{data})
+    ({codVenda},'{cpfCliente}',{data})
     """
     cursor.execute(firstSqlString)
     connection.commit()
@@ -68,7 +68,7 @@ def consultarVenda(codVenda: int):
     connection.close()
     return dadosGerais,dadosProdutos
 
-def atualizarVenda(codVenda: int,cpfCliente: int,data:date,skus : str, quantidades: str):
+def atualizarVenda(codVenda: int,cpfCliente: str,data:date,skus : str, quantidades: str):
     listaQuantidades = quantidades.split(',')
     listaSkus = skus.split(',')
     listaQuantidades = [int(q) for q in listaQuantidades]
@@ -76,7 +76,7 @@ def atualizarVenda(codVenda: int,cpfCliente: int,data:date,skus : str, quantidad
 
     connection = sqlite3.connect('banco.db')
     cursor = connection.cursor()
-    firstSqlString = f"""UPDATE Vendas SET cpfCliente ={cpfCliente},
+    firstSqlString = f"""UPDATE Vendas SET cpfCliente ='{cpfCliente}',
     data={data} 
     WHERE
     codVenda={codVenda}
