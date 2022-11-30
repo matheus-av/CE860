@@ -13,6 +13,16 @@ def codigoValido(cod):
     except:
         return False
 
+def custoPrecoValido(valor):
+    try:
+        valor=float(valor)
+        if type(valor)==float:
+            return True
+        else:
+            return False
+    except:
+        return False
+
 def dataValida(data):
     try:
         data=date(int(data.split('/')[2]),int(data.split('/')[1]),int(data.split('/')[0]))
