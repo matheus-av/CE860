@@ -26,7 +26,7 @@ def receitaTotal(dataInicial,dataFinal):
 
 def lucrosCustosTotais(dataInicial,dataFinal):
     consSqlString = f"""SELECT strftime('%Y',v.data) as Ano,strftime('%m',v.data) as Mês, sum(vp.quantidade*p.custoProduto) as Custo_Total,
-    sum(vp.quantidade*(p.precoProduto-p.custoProduto)) as Custo_Total
+    sum(vp.quantidade*(p.precoProduto-p.custoProduto)) as Lucro_Total
     FROM Vendas_Produtos vp
     INNER JOIN Produtos p
     ON p.sku=vp.skuProduto

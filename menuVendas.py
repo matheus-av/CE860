@@ -52,11 +52,13 @@ def cadastrarVenda():
     maisProduto = True
     while maisProduto:
         sku = input('Digite o SKU do produto:')
-        while (not validacoes.skuValido(sku)) or (not validacoes.existeChavePrimaria('sku','Produtos',int(sku))):
+        while (not validacoes.skuValido(sku)) or (not validacoes.existeChavePrimaria('sku','Produtos',int(sku))) or (int(sku) in skus):
             if not validacoes.skuValido(sku):
                 print('SKU inválido')
             elif not validacoes.existeChavePrimaria('sku','Produtos',sku):
                 print('SKU inexistente.')
+            elif int(sku) in skus:
+                print('SKU já inserido anteriormente nesta venda')
             sku = input('Digite o SKU do produto:')
         skus.append(int(sku))
         quantidade = input('Digite a QUANTIDADE do produto:')
@@ -129,11 +131,14 @@ def atualizarVenda():
     maisProduto = True
     while maisProduto:
         sku = input('Digite o SKU do produto:')
-        while (not validacoes.skuValido(sku)) or (not validacoes.existeChavePrimaria('sku', 'Produtos', int(sku))):
+        while (not validacoes.skuValido(sku)) or (not validacoes.existeChavePrimaria('sku', 'Produtos', int(sku))) or (int(sku) in skus):
             if not validacoes.skuValido(sku):
                 print('SKU inválido')
             elif not validacoes.existeChavePrimaria('sku', 'Produtos', sku):
                 print('SKU inexistente.')
+            elif int(sku) in skus:
+                print('SKU já inserido anteriormente nesta venda')
+            skus.append(int(sku))
             sku = input('Digite o SKU do produto:')
         skus.append(int(sku))
         quantidade = input('Digite a QUANTIDADE do produto:')
@@ -160,7 +165,7 @@ def excluirVenda():
     while (not validacoes.codigoValido(codigo)) or (not validacoes.existeChavePrimaria('codVenda','Vendas',codigo)):
         if not validacoes.codigoValido(codigo):
             print('Código inválido')
-        elif not validacoes.existeChavePrimaria('codVenda','Vendas',cod):
+        elif not validacoes.existeChavePrimaria('codVenda','Vendas',codigo):
             print('Código inexistente')
         codigo = input('Digite o código da venda:')
     codigo=int(codigo)
