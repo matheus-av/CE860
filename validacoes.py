@@ -1,20 +1,63 @@
 import numpy as np
 import sqlite3
+from datetime import date
+import datetime
+
+def codigoValido(cod):
+    try:
+        cod=int(cod)
+        if type(cod)==int:
+            return True
+        else:
+            return False
+    except:
+        return False
+
+def dataValida(data):
+    try:
+        data=date(int(data.split('/')[2]),int(data.split('/')[1]),int(data.split('/')[0]))
+        if type(data)==date:
+            return True
+    except:
+        return False
+def skuValido(sku):
+    try:
+        sku=int(sku)
+        if len(str(sku))!=6:
+            return False
+        else:
+            return True
+    except:
+        return False
+def quantidadeValida(qtd):
+    try:
+        qtd=int(qtd)
+        if qtd >0:
+            return True
+        else:
+            return False
+    except:
+        return False
 
 def existeChavePrimaria(campo, tabela, valor):
-    # Função para checar a existência de uma chave primária no banco
-    connection = sqlite3.connect('banco.db')
-    cursor = connection.cursor()
-    stringConsulta=f'select * from {tabela} WHERE {campo}={valor}'
-    cursor.execute(stringConsulta)
-    resultado = cursor.fetchall()
-    cursor.close()
-    connection.close()
-    if resultado !=[]:
-        #Existe o campo no banco
-        return True
-    else:
-        #Não Existe o campo no banco
+    try:
+        if campo!='cpf':
+            valor=int(valor)
+        # Função para checar a existência de uma chave primária no banco
+        connection = sqlite3.connect('banco.db')
+        cursor = connection.cursor()
+        stringConsulta=f'select * from {tabela} WHERE {campo}={valor}'
+        cursor.execute(stringConsulta)
+        resultado = cursor.fetchall()
+        cursor.close()
+        connection.close()
+        if resultado !=[]:
+            #Existe o campo no banco
+            return True
+        else:
+            #Não Existe o campo no banco
+            return False
+    except:
         return False
 
 def cpfValido(cpf):
@@ -32,9 +75,8 @@ def cpfValido(cpf):
     digitoCorreto = (somaProdutos * 10 % 11) % 10
     if listaDigitos[10] != digitoCorreto:
         return False
-    
-    else:
-        return True
+
+    return True
 
 def ehNulo(entrada):
     #Checar se o valor é nulo

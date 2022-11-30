@@ -1,16 +1,11 @@
 import sqlite3
 from datetime import date
-def cadastrarVenda(codVenda: int,cpfCliente: str,data:date,skus : str, quantidades: str):
-    listaQuantidades=quantidades.split(',')
-    listaSkus = skus.split(',')
-    listaQuantidades=[int(q) for q in listaQuantidades]
-    listaSkus = [int(s) for s in listaSkus]
-
+def cadastrarVenda(codVenda: int,cpfCliente: str,data:date,listaSkus : list(), listaQuantidades: list()):
     connection = sqlite3.connect('banco.db')
     cursor = connection.cursor()
     firstSqlString=f"""INSERT INTO Vendas (codVenda,cpfCliente,data)
     values
-    ({codVenda},'{cpfCliente}',{data})
+    ({codVenda},'{cpfCliente}','{data}')
     """
     cursor.execute(firstSqlString)
     connection.commit()
@@ -23,6 +18,7 @@ def cadastrarVenda(codVenda: int,cpfCliente: str,data:date,skus : str, quantidad
         connection.commit()
     cursor.close()
     connection.close()
+
 
 def consultarTodasVendas():
     connection = sqlite3.connect('banco.db')
@@ -77,7 +73,7 @@ def atualizarVenda(codVenda: int,cpfCliente: str,data:date,skus : str, quantidad
     connection = sqlite3.connect('banco.db')
     cursor = connection.cursor()
     firstSqlString = f"""UPDATE Vendas SET cpfCliente ='{cpfCliente}',
-    data={data} 
+    data='{data}' 
     WHERE
     codVenda={codVenda}
         """

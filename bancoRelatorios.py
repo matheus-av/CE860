@@ -88,5 +88,3 @@ def clientesMaisAtivos(dataInicial,dataFinal):
         print(df.to_string(index=False))
     else:
         print("Sem dados para as datas selecionadas.")
-
-vendasPorLocalidade(date(2020,1,1),date(2022,12,31))
