@@ -5,6 +5,14 @@ Repositório para o projeto da disciplina CE860
 
 O usuário do software será um administrador de uma empresa que visa armazenar informações sobre vendas, produtos e clientes para análise e tomada de decisões.
 
+Será possível:
+
+1. Cadastrar, consultar, atualizar e excluír clientes
+
+2. Cadastrar, consultar, atualizar e excluír produtos
+
+1. Cadastrar, consultar, atualizar e excluír vendas
+
 A partir das informações armazenadas, será possível gerar relatórios de:
 
 1. Receita total
@@ -15,6 +23,6 @@ A partir das informações armazenadas, será possível gerar relatórios de:
 
 4. Lucros e custos totais
 
-## Execução
+## Uso
 
  Para iniciar o programa basta executar o arquivo `main.py`
