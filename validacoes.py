@@ -32,9 +32,7 @@ def cpfValido(cpf):
     digitoCorreto = (somaProdutos * 10 % 11) % 10
     if listaDigitos[10] != digitoCorreto:
         return False
-
-    if existeChavePrimaria('cpf', 'Clientes', cpf):
-        return False
+    
     else:
         return True
 
