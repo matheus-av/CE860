@@ -2,24 +2,27 @@ import validacoes
 import bancoVendas
 
 def menuVendas():
-    print('1 - Cadastrar Venda')
-    print('2 - Consultar Vendas')
-    print('3 - Atualizar Venda')
-    print('4 - Excluír Venda')
-    print('0 - Sair')
+    while True:
+        print('1 - Cadastrar Venda')
+        print('2 - Consultar Vendas')
+        print('3 - Atualizar Venda')
+        print('4 - Excluir Venda')
+        print('0 - Sair')
 
-    opcao = input('Digite o número de uma opção:')
+        opcao = input('Digite o número de uma opção:')
 
-    if opcao == 1:
-        cadastrarVenda()
-    elif opcao == 2:
-        consultarVendas()
-    elif opcao == 3:
-        atualizarVenda()
-    elif opcao == 4:
-        excluirVenda()
-    elif opcao != 0:
-        print('Opção inválida')
+        if opcao == "1":
+            cadastrarVenda()
+        elif opcao == "2":
+            consultarVendas()
+        elif opcao == "3":
+            atualizarVenda()
+        elif opcao == "4":
+            excluirVenda()
+        elif opcao == "0":
+            break
+        else:
+            print('Opção inválida')
 
 def cadastrarVenda():
     cpf = input('Digite o CPF do cliente:')

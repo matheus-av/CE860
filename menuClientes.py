@@ -2,24 +2,27 @@ import validacoes
 import bancoClientes
 
 def menuClientes():
-    print('1 - Cadastrar Cliente')
-    print('2 - Consultar Clientes')
-    print('3 - Atualizar Cliente')
-    print('4 - Excluír Cliente')
-    print('0 - Sair')
+    while True:
+        print('1 - Cadastrar Cliente')
+        print('2 - Consultar Clientes')
+        print('3 - Atualizar Cliente')
+        print('4 - Excluir Cliente')
+        print('0 - Sair')
 
-    opcao = input('Digite o número de uma opção:')
+        opcao = input('Digite o número de uma opção:')
 
-    if opcao == 1:
-        cadastrarCliente()
-    elif opcao == 2:
-        consultarClientes()
-    elif opcao == 3:
-        atualizarCliente()
-    elif opcao == 4:
-        excluirCliente()
-    elif opcao != 0:
-        print('Opção inválida')
+        if opcao == "1":
+            cadastrarCliente()
+        elif opcao == "2":
+            consultarClientes()
+        elif opcao == "3":
+            atualizarCliente()
+        elif opcao == "4":
+            excluirCliente()
+        elif opcao == "0":
+            break
+        else:
+            print('Opção inválida')
 
 def cadastrarCliente():
     cpf = input('Digite o CPF do cliente:')

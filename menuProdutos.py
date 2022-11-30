@@ -2,24 +2,27 @@ import validacoes
 import bancoProdutos
 
 def menuProdutos():
-    print('1 - Cadastrar Produto')
-    print('2 - Consultar Produtos')
-    print('3 - Atualizar Produto')
-    print('4 - Excluír Produto')
-    print('0 - Sair')
+    while True:
+        print('1 - Cadastrar Produto')
+        print('2 - Consultar Produtos')
+        print('3 - Atualizar Produto')
+        print('4 - Excluir Produto')
+        print('0 - Sair')
 
-    opcao = input('Digite o número de uma opção:')
+        opcao = input('Digite o número de uma opção:')
 
-    if opcao == 1:
-        cadastrarProduto()
-    elif opcao == 2:
-        consultarProdutos()
-    elif opcao == 3:
-        atualizarProduto()
-    elif opcao == 4:
-        excluirProduto()
-    elif opcao != 0:
-        print('Opção inválida')
+        if opcao == "1":
+            cadastrarProduto()
+        elif opcao == "2":
+            consultarProdutos()
+        elif opcao == "3":
+            atualizarProduto()
+        elif opcao == "4":
+            excluirProduto()
+        elif opcao == "0":
+            break
+        else:
+            print('Opção inválida')
 
 def cadastrarProduto():
     sku = input('Digite o SKU do produto:')
