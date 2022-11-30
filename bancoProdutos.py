@@ -30,8 +30,7 @@ def consultarProdutos():
   todosProdutos = cursor.fetchall()
   cursor.close()
   connection.close()
-  for i in todosProdutos:
-    print(i)
+  return todosProdutos
 
 def atualizarProduto(sku: int, nome: str, preco: float, custo: float):
   connection = sqlite3.connect('banco.db')

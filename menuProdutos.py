@@ -1,6 +1,6 @@
 import validacoes
 import bancoProdutos
-
+import pandas as pd
 def menuProdutos():
     while True:
         print('1 - Cadastrar Produto')
@@ -53,7 +53,17 @@ def cadastrarProduto():
     print('Produto Cadastrado')
 
 def consultarProdutos():
-    print(bancoProdutos.consultarProdutos())
+    resultados=bancoProdutos.consultarProdutos()
+    skus=[r[0] for r in resultados]
+    nomes = [r[1] for r in resultados]
+    precos = [r[2] for r in resultados]
+    custos = [r[3] for r in resultados]
+    dfExibir =pd.DataFrame({'SKU':skus,
+                            'Nome do Produto':nomes,
+                            'Preço':precos,
+                            'Custo':custos
+                            })
+    print(dfExibir.to_string(index=False))
 
 def atualizarProduto():
     sku = input('Digite o SKU do produto a ser atualizado: ')

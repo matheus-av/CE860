@@ -1,6 +1,6 @@
 import validacoes
 import bancoClientes
-
+import pandas as pd
 def menuClientes():
     while True:
         print('1 - Cadastrar Cliente')
@@ -48,7 +48,15 @@ def cadastrarCliente():
     print('Cliente Cadastrado')
 
 def consultarClientes():
-    print(bancoClientes.consultarClientes())
+    resultados = bancoClientes.consultarClientes()
+    cpfs = [r[0] for r in resultados]
+    nomes = [r[1] for r in resultados]
+    estados = [r[2] for r in resultados]
+    dfExibir = pd.DataFrame({'CPF': cpfs,
+                             'Nome do Cliente': nomes,
+                             'Estado': estados,
+                             })
+    print(dfExibir.to_string(index=False))
 
 def atualizarCliente():
     cpf = input('Digite o CPF do cliente a ser atualizado: ')

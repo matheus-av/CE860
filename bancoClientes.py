@@ -15,8 +15,7 @@ def consultarClientes():
   todosClientes = cursor.fetchall()
   cursor.close()
   connection.close()
-  for i in todosClientes:
-    print(i)
+  return todosClientes
 
 def atualizarCliente(cpf: str, nome: str, estado: str):
   connection = sqlite3.connect('banco.db')

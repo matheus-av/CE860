@@ -84,12 +84,12 @@ def consultarVendas():
     nomes = [r[1] for r in resultados]
     datas = [r[2] for r in resultados]
     valores = [r[3] for r in resultados]
-    dfExibir =pd.DataFrame({'Código_da_Venda':cods,
-                            'Nome_do_Cliente':nomes,
+    dfExibir =pd.DataFrame({'Código da Venda':cods,
+                            'Nome do Cliente':nomes,
                             'Data':datas,
-                            'Valor_Total':valores
+                            'Valor Total':valores
                             })
-    print(dfExibir.to_string())
+    print(dfExibir.to_string(index=False))
 
 def atualizarVenda():
     codigo = input('Digite o código da venda:')
