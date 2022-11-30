@@ -83,5 +83,13 @@ def consultarProdutos():
 def atualizarProduto():
     return 0 #FAZER
 
-def excluirProduto():
-    return 0 #FAZER
+def excluirVenda():
+    cod = input('Digite o código da venda:')
+    while (not validacoes.codigoValido(cod)) or (not validacoes.existeChavePrimaria('codVenda','Vendas',cod)):
+        if not validacoes.codigoValido(cod):
+            print('Código inválido')
+        elif not validacoes.existeChavePrimaria('codVenda','Vendas',cod):
+            print('Código inexistente')
+        cod = input('Digite o código da venda:')
+    bancoVendas.excluirVenda(cod)
+    print('Venda Excluída')
