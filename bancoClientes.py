@@ -3,7 +3,7 @@ import sqlite3
 def cadastrarCliente(cpf: str, nome: str, estado: str):
   connection = sqlite3.connect('banco.db')
   cursor = connection.cursor()
-  cursor.execute(f"insert into Clientes (cpf, nome, estado) values ('{cpf}', '{nome}', '{estado}')")
+  cursor.execute(f"insert into Clientes (cpf, nomeCliente, estado) values ('{cpf}', '{nome}', '{estado}')")
   connection.commit()
   cursor.close()
   connection.close()
@@ -15,12 +15,13 @@ def consultarClientes():
   todosClientes = cursor.fetchall()
   cursor.close()
   connection.close()
-  return todosClientes
+  for i in todosClientes:
+    print(i)
 
 def atualizarCliente(cpf: str, nome: str, estado: str):
   connection = sqlite3.connect('banco.db')
   cursor = connection.cursor()
-  cursor.execute(f"update Clientes set nome = '{nome}', estado = '{estado}' where cpf = '{cpf}'")
+  cursor.execute(f"update Clientes set nomeCliente = '{nome}', estado = '{estado}' where cpf = '{cpf}'")
   connection.commit()
   cursor.close()
   connection.close()
