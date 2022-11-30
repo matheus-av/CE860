@@ -2,7 +2,7 @@ import numpy as np
 import sqlite3
 from datetime import date
 import datetime
-
+import re
 def codigoValido(cod):
     try:
         cod=int(cod)
@@ -71,6 +71,8 @@ def existeChavePrimaria(campo, tabela, valor):
         return False
 
 def cpfValido(cpf):
+    if re.search('[a-zA-z]',cpf):
+        return False
     listaDigitos = [int(digito) for digito in str(cpf) if digito.isdigit()]
     #Checando tamanho correto
     if len(listaDigitos)!= 11:
@@ -85,7 +87,6 @@ def cpfValido(cpf):
     digitoCorreto = (somaProdutos * 10 % 11) % 10
     if listaDigitos[10] != digitoCorreto:
         return False
-
     return True
 
 def ehNulo(entrada):
