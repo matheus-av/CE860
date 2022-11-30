@@ -1,5 +1,6 @@
 import validacoes
 import bancoVendas
+import pandas as pd
 from datetime import date
 def menuVendas():
     while True:
@@ -77,10 +78,20 @@ def cadastrarVenda():
     bancoVendas.cadastrarVenda(codigo,cpf,data,skus,quantidades)
     print('Venda Cadastrada')
 
-def consultarProdutos():
-    print(bancoVendas.consultarVendas())
+def consultarVendas():
+    resultados=bancoVendas.consultarTodasVendas()
+    cods=[r[0] for r in resultados]
+    nomes = [r[1] for r in resultados]
+    datas = [r[2] for r in resultados]
+    valores = [r[3] for r in resultados]
+    dfExibir =pd.DataFrame({'Código_da_Venda':cods,
+                            'Nome_do_Cliente':nomes,
+                            'Data':datas,
+                            'Valor_Total':valores
+                            })
+    print(dfExibir.to_string())
 
-def atualizarProduto():
+def atualizarVenda():
     return 0 #FAZER
 
 def excluirVenda():

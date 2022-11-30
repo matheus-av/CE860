@@ -20,9 +20,9 @@ def getReceitaTotal(dataInicial,dataFinal):
     """
     df=getRelatorioFromStringSQL(consSqlString)
     if not df.empty:
-        print(df.to_string(index=False))
+        return df.to_string(index=False)
     else:
-        print("Sem dados para as datas selecionadas.")
+        return "Sem dados para as datas selecionadas."
 
 def getLucrosCustosTotais(dataInicial,dataFinal):
     consSqlString = f"""SELECT strftime('%Y',v.data) as Ano,strftime('%m',v.data) as Mês, sum(vp.quantidade*p.custoProduto) as Custo_Total,
@@ -37,9 +37,9 @@ def getLucrosCustosTotais(dataInicial,dataFinal):
     """
     df=getRelatorioFromStringSQL(consSqlString)
     if not df.empty:
-        print(df.to_string(index=False))
+        return df.to_string(index=False)
     else:
-        print("Sem dados para as datas selecionadas.")
+        return "Sem dados para as datas selecionadas."
 
 def produtosMaisVendidos(dataInicial,dataFinal):
     consSqlString=f"""
@@ -55,9 +55,9 @@ def produtosMaisVendidos(dataInicial,dataFinal):
     """
     df=getRelatorioFromStringSQL(consSqlString)
     if not df.empty:
-        print(df.to_string(index=False))
+        return df.to_string(index=False)
     else:
-        print("Sem dados para as datas selecionadas.")
+        return "Sem dados para as datas selecionadas."
 
 def vendasPorLocalidade(dataInicial,dataFinal):
     consSqlString=f"""
@@ -69,9 +69,9 @@ def vendasPorLocalidade(dataInicial,dataFinal):
     """
     df=getRelatorioFromStringSQL(consSqlString)
     if not df.empty:
-        print(df.to_string(index=False))
+        return df.to_string(index=False)
     else:
-        print("Sem dados para as datas selecionadas.")
+        return "Sem dados para as datas selecionadas."
 
 def clientesMaisAtivos(dataInicial,dataFinal):
     consSqlString=f"""
@@ -85,6 +85,6 @@ def clientesMaisAtivos(dataInicial,dataFinal):
     """
     df=getRelatorioFromStringSQL(consSqlString)
     if not df.empty:
-        print(df.to_string(index=False))
+        return df.to_string(index=False)
     else:
-        print("Sem dados para as datas selecionadas.")
+        return "Sem dados para as datas selecionadas."

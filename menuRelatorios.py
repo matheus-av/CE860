@@ -1,6 +1,6 @@
 import validacoes
 import bancoRelatorios
-
+from datetime import date
 def menuRelatorios():
     print('1 - Receita total')
     print('2 - Vendas por Localidade')
@@ -10,26 +10,81 @@ def menuRelatorios():
 
     opcao = input('Digite o número de uma opção:')
 
-    if opcao == 1:
+    if opcao == '1':
         relatorioReceitaTotal()
-    elif opcao == 2:
+    elif opcao == '2':
         vendasPorLocalidade()
-    elif opcao == 3:
+    elif opcao == '3':
         produtosMaisVendidos()
-    elif opcao == 4:
+    elif opcao == '4':
         lucrosCustosTotais()
-    elif opcao != 0:
+    else:
         print('Opção inválida')
 
 def relatorioReceitaTotal():
-    return 0  # FAZER
+    dataInicial = input('Digite a DATA inicial (Formato Dia/Mês/Ano):')
+    while not validacoes.dataValida(dataInicial):
+        print('DATA inválida')
+        dataInicial = input('Digite a DATA inicial (Formato Dia/Mês/Ano):')
+    dataInicial= date(int(dataInicial.split('/')[2]),int(dataInicial.split('/')[1]),int(dataInicial.split('/')[0]))
+
+    dataFinal = input('Digite a DATA final (Formato Dia/Mês/Ano):')
+    while not validacoes.dataValida(dataFinal):
+        print('DATA inválida')
+        dataFinal = input('Digite a DATA final (Formato Dia/Mês/Ano):')
+    dataFinal= date(int(dataFinal.split('/')[2]),int(dataFinal.split('/')[1]),int(dataFinal.split('/')[0]))
+    print(bancoRelatorios.getReceitaTotal(dataInicial,dataFinal))
 def vendasPorLocalidade():
-    return 0 #FAZER
+    dataInicial = input('Digite a DATA inicial (Formato Dia/Mês/Ano):')
+    while not validacoes.dataValida(dataInicial):
+        print('DATA inválida')
+        dataInicial = input('Digite a DATA inicial (Formato Dia/Mês/Ano):')
+    dataInicial = date(int(dataInicial.split('/')[2]), int(dataInicial.split('/')[1]), int(dataInicial.split('/')[0]))
+
+    dataFinal = input('Digite a DATA final (Formato Dia/Mês/Ano):')
+    while not validacoes.dataValida(dataFinal):
+        print('DATA inválida')
+        dataFinal = input('Digite a DATA final (Formato Dia/Mês/Ano):')
+    dataFinal = date(int(dataFinal.split('/')[2]), int(dataFinal.split('/')[1]), int(dataFinal.split('/')[0]))
+    print(bancoRelatorios.vendasPorLocalidade(dataInicial,dataFinal))
 
 def produtosMaisVendidos():
-    return 0 #FAZER
+    dataInicial = input('Digite a DATA inicial (Formato Dia/Mês/Ano):')
+    while not validacoes.dataValida(dataInicial):
+        print('DATA inválida')
+        dataInicial = input('Digite a DATA inicial (Formato Dia/Mês/Ano):')
+    dataInicial = date(int(dataInicial.split('/')[2]), int(dataInicial.split('/')[1]), int(dataInicial.split('/')[0]))
+
+    dataFinal = input('Digite a DATA final (Formato Dia/Mês/Ano):')
+    while not validacoes.dataValida(dataFinal):
+        print('DATA inválida')
+        dataFinal = input('Digite a DATA final (Formato Dia/Mês/Ano):')
+    dataFinal = date(int(dataFinal.split('/')[2]), int(dataFinal.split('/')[1]), int(dataFinal.split('/')[0]))
+    print(bancoRelatorios.produtosMaisVendidos(dataInicial,dataFinal))
 
 def lucrosCustosTotais():
-    return 0 #FAZER
+    dataInicial = input('Digite a DATA inicial (Formato Dia/Mês/Ano):')
+    while not validacoes.dataValida(dataInicial):
+        print('DATA inválida')
+        dataInicial = input('Digite a DATA inicial (Formato Dia/Mês/Ano):')
+    dataInicial = date(int(dataInicial.split('/')[2]), int(dataInicial.split('/')[1]), int(dataInicial.split('/')[0]))
+
+    dataFinal = input('Digite a DATA final (Formato Dia/Mês/Ano):')
+    while not validacoes.dataValida(dataFinal):
+        print('DATA inválida')
+        dataFinal = input('Digite a DATA final (Formato Dia/Mês/Ano):')
+    dataFinal = date(int(dataFinal.split('/')[2]), int(dataFinal.split('/')[1]), int(dataFinal.split('/')[0]))
+    print(bancoRelatorios.getLucrosCustosTotais(dataInicial,dataFinal))
 def clientesMaisAtivos():
-    return 0 #FAZER
+    dataInicial = input('Digite a DATA inicial (Formato Dia/Mês/Ano):')
+    while not validacoes.dataValida(dataInicial):
+        print('DATA inválida')
+        dataInicial = input('Digite a DATA inicial (Formato Dia/Mês/Ano):')
+    dataInicial = date(int(dataInicial.split('/')[2]), int(dataInicial.split('/')[1]), int(dataInicial.split('/')[0]))
+
+    dataFinal = input('Digite a DATA final (Formato Dia/Mês/Ano):')
+    while not validacoes.dataValida(dataFinal):
+        print('DATA inválida')
+        dataFinal = input('Digite a DATA final (Formato Dia/Mês/Ano):')
+    dataFinal = date(int(dataFinal.split('/')[2]), int(dataFinal.split('/')[1]), int(dataFinal.split('/')[0]))
+    print(bancoRelatorios.clientesMaisAtivos(dataInicial,dataFinal))
