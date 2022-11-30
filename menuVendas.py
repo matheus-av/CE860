@@ -6,7 +6,7 @@ def menuVendas():
         print('1 - Cadastrar Venda')
         print('2 - Consultar Vendas')
         print('3 - Atualizar Venda')
-        print('4 - Excluír Venda')
+        print('4 - Excluir Venda')
         print('0 - Sair')
 
         opcao = input('Digite o número de uma opção:')
