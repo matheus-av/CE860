@@ -18,7 +18,7 @@ def criarTabelaProdutos():
 def cadastrarProduto(sku: int, nome: str, preco: float, custo: float):
   connection = sqlite3.connect('banco.db')
   cursor = connection.cursor()
-  cursor.execute(f"insert into Produtos (sku, nome, preco, custo) values ({sku}, '{nome}', {preco}, {custo})")
+  cursor.execute(f"insert into Produtos (sku, nomeProduto, precoProduto, custoProduto) values ({sku}, '{nome}', {preco}, {custo})")
   connection.commit()
   cursor.close()
   connection.close()
@@ -30,12 +30,13 @@ def consultarProdutos():
   todosProdutos = cursor.fetchall()
   cursor.close()
   connection.close()
-  return todosProdutos
+  for i in todosProdutos:
+    print(i)
 
 def atualizarProduto(sku: int, nome: str, preco: float, custo: float):
   connection = sqlite3.connect('banco.db')
   cursor = connection.cursor()
-  cursor.execute(f"update Produtos set nome = '{nome}', preco = {preco}, custo = {custo} where sku = {sku}")
+  cursor.execute(f"update Produtos set nomeProduto = '{nome}', precoProduto = {preco}, custoProduto = {custo} where sku = {sku}")
   connection.commit()
   cursor.close()
   connection.close()
