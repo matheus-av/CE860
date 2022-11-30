@@ -46,7 +46,7 @@ def consultarVenda(codVenda: int):
     connection = sqlite3.connect('banco.db')
     cursor = connection.cursor()
     cursor.execute(f"""
-    SELECT v.codVenda,c.nomeCliente,v.data from Vendas v INNER JOIN
+    SELECT v.codVenda,c.nomeCliente,c.cpf,v.data from Vendas v INNER JOIN
     Clientes c
     ON c.cpf=v.cpfCliente
     WHERE v.codVenda={codVenda}
@@ -54,7 +54,7 @@ def consultarVenda(codVenda: int):
     """)
     dadosGerais = cursor.fetchall()
     cursor.execute(f"""
-  SELECT vp.skuProduto,vp.quantidade,p.precoProduto,vp.quantidade*p.precoProduto as valor_total FROM Vendas_Produtos vp
+  SELECT vp.skuProduto,p.nomeProduto,vp.quantidade,p.precoProduto,vp.quantidade*p.precoProduto as valor_total FROM Vendas_Produtos vp
   INNER JOIN Produtos p
   ON p.sku=vp.skuProduto
   WHERE vp.codVenda={codVenda}
@@ -64,12 +64,7 @@ def consultarVenda(codVenda: int):
     connection.close()
     return dadosGerais,dadosProdutos
 
-def atualizarVenda(codVenda: int,cpfCliente: str,data:date,skus : str, quantidades: str):
-    listaQuantidades = quantidades.split(',')
-    listaSkus = skus.split(',')
-    listaQuantidades = [int(q) for q in listaQuantidades]
-    listaSkus = [int(s) for s in listaSkus]
-
+def atualizarVenda(codVenda: int,cpfCliente: str,data:date,listaSkus : list(), listaQuantidades: list()):
     connection = sqlite3.connect('banco.db')
     cursor = connection.cursor()
     firstSqlString = f"""UPDATE Vendas SET cpfCliente ='{cpfCliente}',
@@ -110,4 +105,3 @@ def excluirVenda(codVenda: int):
         """
     cursor.execute(secondSqlString)
     connection.commit()
-excluirVenda(1)
