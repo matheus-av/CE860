@@ -50,8 +50,17 @@ def validaNulo(entrada):
     else:
         print("Erro: Dado Nulo.")
         return False
-
-
+    
+def validaEstado(estado):
+    lista = ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO",
+             "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR",
+             "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"]
+    if estado in lista:
+        return True
+    else:
+        print("Erro: Sigla de Estado inválida.")
+        return False
+    
 def checkQuantidades(quantidades):
     #Validar entrada de quantidades
     if quantidades=="":
