@@ -9,7 +9,7 @@ def getRelatorioFromStringSQL(consSqlString):
     df = pd.read_sql_query(consSqlString, connection)
     return df
 
-def getReceitaTotal(dataInicial,dataFinal):
+def receitaTotal(dataInicial,dataFinal):
     consSqlString = f"""SELECT strftime('%Y',v.data) as Ano,strftime('%m',v.data) as Mês, sum(vp.quantidade*p.precoProduto) as Receita_Total FROM Vendas_Produtos vp
     INNER JOIN Produtos p
     ON p.sku=vp.skuProduto
@@ -24,7 +24,7 @@ def getReceitaTotal(dataInicial,dataFinal):
     else:
         return None
 
-def getLucrosCustosTotais(dataInicial,dataFinal):
+def lucrosCustosTotais(dataInicial,dataFinal):
     consSqlString = f"""SELECT strftime('%Y',v.data) as Ano,strftime('%m',v.data) as Mês, sum(vp.quantidade*p.custoProduto) as Custo_Total,
     sum(vp.quantidade*(p.precoProduto-p.custoProduto)) as Custo_Total
     FROM Vendas_Produtos vp

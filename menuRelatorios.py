@@ -33,7 +33,7 @@ def relatorioReceitaTotal():
         print('DATA inválida')
         dataFinal = input('Digite a DATA final (Formato Dia/Mês/Ano):')
     dataFinal= date(int(dataFinal.split('/')[2]),int(dataFinal.split('/')[1]),int(dataFinal.split('/')[0]))
-    relatorio=bancoRelatorios.getReceitaTotal(dataInicial,dataFinal)
+    relatorio=bancoRelatorios.receitaTotal(dataInicial,dataFinal)
     if relatorio == None:
         print("Sem resultados para as datas selecionadas.")
     else:
@@ -86,7 +86,7 @@ def lucrosCustosTotais():
         print('DATA inválida')
         dataFinal = input('Digite a DATA final (Formato Dia/Mês/Ano):')
     dataFinal = date(int(dataFinal.split('/')[2]), int(dataFinal.split('/')[1]), int(dataFinal.split('/')[0]))
-    relatorio=bancoRelatorios.getLucrosCustosTotais(dataInicial,dataFinal)
+    relatorio=bancoRelatorios.lucrosCustosTotais(dataInicial,dataFinal)
     if relatorio == None:
         print("Sem resultados para as datas selecionadas.")
     else:
