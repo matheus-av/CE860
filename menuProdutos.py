@@ -9,7 +9,7 @@ def menuProdutos():
         print('4 - Excluir Produto')
         print('0 - Sair')
 
-        opcao = input('Digite o número de uma opção:')
+        opcao = input('Digite o número de uma opção: ')
 
         if opcao == "1":
             cadastrarProduto()
@@ -25,25 +25,29 @@ def menuProdutos():
             print('Opção inválida')
 
 def cadastrarProduto():
-    sku = input('Digite o SKU do produto:')
-    while not validacoes.skuValido(cpf):
-        print('SKU inválido')
-        cpf = input('Digite o SKU do produto:')
+    sku = input('Digite o SKU do produto a ser cadastrado: ')
+    while not validacoes.skuValido(sku) or validacoes.existeChavePrimaria('sku', 'Produtos', sku):
+         if not validacoes.skuValido(sku):
+            print('SKU inválido')
+            sku = input('Digite o SKU do produto a ser cadastrado: ')
+         elif validacoes.existeChavePrimaria('sku', 'Produtos', sku):
+            print('SKU já cadastrado')
+            sku = input('Digite o SKU do produto a ser cadastrado: ')
 
-    nome = input('Digite o NOME do produto:')
-    while not validacoes.validaNulo(nome):
+    nome = input('Digite o NOME do produto a ser cadastrado: ')
+    while not validacoes.ehNulo(nome):
         print('NOME inválido')
-        nome = input('Digite o NOME do produto:')
-    
-    custo = input('Digite o CUSTO do produto:')
-    while not validacoes.custoValido(custo):
-        print('CUSTO inválido')
-        estado = input('Digite o CUSTO do produto:')
+        nome = input('Digite o NOME do produto a ser cadastrado: ')
 
-    preco = input('Digite o PREÇO do produto:')
-    while not validacoes.precoValido(preco):
+    preco = input('Digite o PREÇO do produto a ser cadastrado: ')
+    while not validacoes.custoPrecoValido(preco):
         print('PREÇO inválido')
-        preco = input('Digite o PREÇO do produto:')
+        preco = input('Digite o PREÇO do produto: ')
+
+    custo = input('Digite o CUSTO do produto a ser cadastrado: ')
+    while not validacoes.custoPrecoValido(custo):
+        print('CUSTO inválido')
+        custo = input('Digite o CUSTO do produto a ser cadastrado: ')
 
     bancoProdutos.cadastrarProduto(sku, nome, preco, custo)
     print('Produto Cadastrado')
@@ -52,34 +56,42 @@ def consultarProdutos():
     print(bancoProdutos.consultarProdutos())
 
 def atualizarProduto():
-    sku = input('Digite o SKU do produto:')
-    while not validacoes.skuValido(cpf):
-        print('SKU inválido')
-        cpf = input('Digite o SKU do produto:')
+    sku = input('Digite o SKU do produto a ser atualizado: ')
+    while not validacoes.skuValido(sku) or not validacoes.existeChavePrimaria('sku', 'Produtos', sku):
+        if not validacoes.skuValido(sku):
+            print('SKU inválido')
+            sku = input('Digite o SKU do produto a ser atualizado: ')
+        elif not validacoes.existeChavePrimaria('sku', 'Produtos', sku):
+            print('SKU não encontrado no Banco de Dados')
+            sku = input('Digite o SKU do produto a ser atualizado: ')
 
-    nome = input('Digite o NOME do produto:')
-    while not validacoes.validaNulo(nome):
+    nome = input('Digite o NOME do produto a ser atualizado: ')
+    while not validacoes.ehNulo(nome):
         print('NOME inválido')
-        nome = input('Digite o NOME do produto:')
-    
-    custo = input('Digite o CUSTO do produto:')
-    while not validacoes.custoValido(custo):
-        print('CUSTO inválido')
-        estado = input('Digite o CUSTO do produto:')
+        nome = input('Digite o NOME do produto a ser atualizado: ')
 
-    preco = input('Digite o PREÇO do produto:')
-    while not validacoes.precoValido(preco):
+    preco = input('Digite o PREÇO do produto a ser atualizado: ')
+    while not validacoes.custoPrecoValido(preco):
         print('PREÇO inválido')
-        preco = input('Digite o PREÇO do produto:')
+        preco = input('Digite o PREÇO do produto a ser atualizado: ')
+
+    custo = input('Digite o CUSTO do produto a ser atualizado: ')
+    while not validacoes.custoPrecoValido(custo):
+        print('CUSTO inválido')
+        custo = input('Digite o CUSTO do produto a ser atualizado: ')
 
     bancoProdutos.atualizarProduto(sku, nome, preco, custo)
     print('Produto Atualizado')
 
 def excluirProduto():
-    sku = input('Digite o SKU do produto:')
-    while not validacoes.skuValido(cpf):
-        print('SKU inválido')
-        cpf = input('Digite o SKU do produto:')
+    sku = input('Digite o SKU do produto a ser excluído: ')
+    while not validacoes.skuValido(sku) or not validacoes.existeChavePrimaria('sku', 'Produtos', sku):
+        if not validacoes.skuValido(sku):
+            print('SKU inválido')
+            sku = input('Digite o SKU do produto a ser excluído: ')
+        elif not validacoes.existeChavePrimaria('sku', 'Produtos', sku):
+            print('SKU não encontrado no Banco de Dados')
+            sku = input('Digite o SKU do produto a ser excluído: ')
 
     bancoProdutos.excluirProduto(sku)
     print('Produto Excluído')
