@@ -9,7 +9,7 @@ def menuClientes():
         print('4 - Excluir Cliente')
         print('0 - Sair')
 
-        opcao = input('Digite o número de uma opção:')
+        opcao = input('Digite o número de uma opção: ')
 
         if opcao == "1":
             cadastrarCliente()
@@ -25,20 +25,24 @@ def menuClientes():
             print('Opção inválida')
 
 def cadastrarCliente():
-    cpf = input('Digite o CPF do cliente:')
-    while not validacoes.validaCpf(cpf):
-        print('CPF inválido')
-        cpf = input('Digite o CPF do cliente:')
+    cpf = input('Digite o CPF do cliente a ser cadastrado: ')
+    while not validacoes.cpfValido(cpf) or validacoes.existeChavePrimaria('cpf', 'Clientes', cpf):
+        if not validacoes.cpfValido(cpf):
+            print('CPF inválido')
+            cpf = input('Digite o CPF do cliente a ser cadastrado: ')
+        if validacoes.existeChavePrimaria('cpf', 'Clientes', cpf):
+            print('CPF já cadastrado')
+            cpf = input('Digite o CPF do cliente a ser cadastrado: ')
 
-    nome = input('Digite o NOME do cliente:')
-    while not validacoes.validaNulo(nome):
+    nome = input('Digite o NOME do cliente a ser cadastrado: ')
+    while not validacoes.ehNulo(nome):
         print('NOME inválido')
-        nome = input('Digite o NOME do cliente:')
+        nome = input('Digite o NOME do cliente a ser cadastrado: ')
     
-    estado = input('Digite o ESTADO do cliente:')
+    estado = input('Digite o ESTADO do cliente a ser cadastrado: ')
     while not validacoes.estadoValido(estado):
         print('ESTADO inválido')
-        estado = input('Digite o ESTADO do cliente:')
+        estado = input('Digite o ESTADO do cliente a ser cadastrado: ')
 
     bancoClientes.cadastrarCliente(cpf, nome, estado)
     print('Cliente Cadastrado')
@@ -47,29 +51,37 @@ def consultarClientes():
     print(bancoClientes.consultarClientes())
 
 def atualizarCliente():
-    cpf = input('Digite o CPF do cliente:')
-    while not validacoes.validaCpf(cpf):
-        print('CPF inválido')
-        cpf = input('Digite o CPF do cliente:')
+    cpf = input('Digite o CPF do cliente a ser atualizado: ')
+    while not validacoes.cpfValido(cpf) or not validacoes.existeChavePrimaria('cpf', 'Clientes', cpf):
+        if not validacoes.cpfValido(cpf):
+            print('CPF inválido')
+            cpf = input('Digite o CPF do cliente a ser atualizado: ')
+        if not validacoes.existeChavePrimaria('cpf', 'Clientes', cpf):
+            print('CPF não encontrado no Banco de Dados')
+            cpf = input('Digite o CPF do cliente a ser atualizado: ')
 
-    nome = input('Digite o NOME do cliente:')
-    while not validacoes.validaNulo(nome):
+    nome = input('Digite o NOME do cliente a ser atualizado:')
+    while not validacoes.ehNulo(nome):
         print('NOME inválido')
-        nome = input('Digite o NOME do cliente:')
+        nome = input('Digite o NOME do cliente a ser atualizado: ')
     
-    estado = input('Digite o ESTADO do cliente:')
+    estado = input('Digite o ESTADO do cliente a ser atualizado: ')
     while not validacoes.estadoValido(estado):
         print('ESTADO inválido')
-        estado = input('Digite o ESTADO do cliente:')
+        estado = input('Digite o ESTADO do cliente a ser atualizado: ')
 
     bancoClientes.atualizarCliente(cpf, nome, estado)
     print('Cliente Atualizado')
 
 def excluirCliente():
-    cpf = input('Digite o CPF do cliente:')
-    while not validacoes.validaCpf(cpf):
-        print('CPF inválido')
-        cpf = input('Digite o CPF do cliente:')
+    cpf = input('Digite o CPF do cliente a ser excluído: ')
+    while not validacoes.cpfValido(cpf) or not validacoes.existeChavePrimaria('cpf', 'Clientes', cpf):
+        if not validacoes.cpfValido(cpf):
+            print('CPF inválido')
+            cpf = input('Digite o CPF do cliente a ser excluído: ')
+        if not validacoes.existeChavePrimaria('cpf', 'Clientes', cpf):
+            print('CPF não encontrado no Banco de Dados')
+            cpf = input('Digite o CPF do cliente a ser excluído: ')
 
     bancoClientes.excluirCliente(cpf)
     print('Cliente Excluído')
