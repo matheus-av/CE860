@@ -16,7 +16,7 @@ def codigoValido(cod):
 def custoPrecoValido(valor):
     try:
         valor=float(valor)
-        if type(valor)==float:
+        if type(valor)==float and valor >0:
             return True
         else:
             return False
@@ -71,7 +71,7 @@ def existeChavePrimaria(campo, tabela, valor):
         return False
 
 def cpfValido(cpf):
-    if re.search('[a-zA-z]',cpf):
+    if re.search('[^0-9]',cpf):
         return False
     listaDigitos = [int(digito) for digito in str(cpf) if digito.isdigit()]
     #Checando tamanho correto
