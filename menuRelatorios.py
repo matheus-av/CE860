@@ -33,7 +33,11 @@ def relatorioReceitaTotal():
         print('DATA inválida')
         dataFinal = input('Digite a DATA final (Formato Dia/Mês/Ano):')
     dataFinal= date(int(dataFinal.split('/')[2]),int(dataFinal.split('/')[1]),int(dataFinal.split('/')[0]))
-    print(bancoRelatorios.getReceitaTotal(dataInicial,dataFinal))
+    relatorio=bancoRelatorios.getReceitaTotal(dataInicial,dataFinal)
+    if relatorio == None:
+        print("Sem resultados para as datas selecionadas.")
+    else:
+        print(relatorio)
 def vendasPorLocalidade():
     dataInicial = input('Digite a DATA inicial (Formato Dia/Mês/Ano):')
     while not validacoes.dataValida(dataInicial):
@@ -46,7 +50,11 @@ def vendasPorLocalidade():
         print('DATA inválida')
         dataFinal = input('Digite a DATA final (Formato Dia/Mês/Ano):')
     dataFinal = date(int(dataFinal.split('/')[2]), int(dataFinal.split('/')[1]), int(dataFinal.split('/')[0]))
-    print(bancoRelatorios.vendasPorLocalidade(dataInicial,dataFinal))
+    relatorio=bancoRelatorios.vendasPorLocalidade(dataInicial,dataFinal)
+    if relatorio == None:
+        print("Sem resultados para as datas selecionadas.")
+    else:
+        print(relatorio)
 
 def produtosMaisVendidos():
     dataInicial = input('Digite a DATA inicial (Formato Dia/Mês/Ano):')
@@ -60,7 +68,11 @@ def produtosMaisVendidos():
         print('DATA inválida')
         dataFinal = input('Digite a DATA final (Formato Dia/Mês/Ano):')
     dataFinal = date(int(dataFinal.split('/')[2]), int(dataFinal.split('/')[1]), int(dataFinal.split('/')[0]))
-    print(bancoRelatorios.produtosMaisVendidos(dataInicial,dataFinal))
+    relatorio=bancoRelatorios.produtosMaisVendidos(dataInicial,dataFinal)
+    if relatorio == None:
+        print("Sem resultados para as datas selecionadas.")
+    else:
+        print(relatorio)
 
 def lucrosCustosTotais():
     dataInicial = input('Digite a DATA inicial (Formato Dia/Mês/Ano):')
@@ -74,7 +86,11 @@ def lucrosCustosTotais():
         print('DATA inválida')
         dataFinal = input('Digite a DATA final (Formato Dia/Mês/Ano):')
     dataFinal = date(int(dataFinal.split('/')[2]), int(dataFinal.split('/')[1]), int(dataFinal.split('/')[0]))
-    print(bancoRelatorios.getLucrosCustosTotais(dataInicial,dataFinal))
+    relatorio=bancoRelatorios.getLucrosCustosTotais(dataInicial,dataFinal)
+    if relatorio == None:
+        print("Sem resultados para as datas selecionadas.")
+    else:
+        print(relatorio)
 def clientesMaisAtivos():
     dataInicial = input('Digite a DATA inicial (Formato Dia/Mês/Ano):')
     while not validacoes.dataValida(dataInicial):
@@ -87,4 +103,8 @@ def clientesMaisAtivos():
         print('DATA inválida')
         dataFinal = input('Digite a DATA final (Formato Dia/Mês/Ano):')
     dataFinal = date(int(dataFinal.split('/')[2]), int(dataFinal.split('/')[1]), int(dataFinal.split('/')[0]))
-    print(bancoRelatorios.clientesMaisAtivos(dataInicial,dataFinal))
+    relatorio=bancoRelatorios.clientesMaisAtivos(dataInicial,dataFinal)
+    if relatorio == None:
+        print("Sem resultados para as datas selecionadas.")
+    else:
+        print(relatorio)

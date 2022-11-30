@@ -22,7 +22,7 @@ def getReceitaTotal(dataInicial,dataFinal):
     if not df.empty:
         return df.to_string(index=False)
     else:
-        return "Sem dados para as datas selecionadas."
+        return None
 
 def getLucrosCustosTotais(dataInicial,dataFinal):
     consSqlString = f"""SELECT strftime('%Y',v.data) as Ano,strftime('%m',v.data) as Mês, sum(vp.quantidade*p.custoProduto) as Custo_Total,
@@ -39,7 +39,7 @@ def getLucrosCustosTotais(dataInicial,dataFinal):
     if not df.empty:
         return df.to_string(index=False)
     else:
-        return "Sem dados para as datas selecionadas."
+        return None
 
 def produtosMaisVendidos(dataInicial,dataFinal):
     consSqlString=f"""
@@ -57,7 +57,7 @@ def produtosMaisVendidos(dataInicial,dataFinal):
     if not df.empty:
         return df.to_string(index=False)
     else:
-        return "Sem dados para as datas selecionadas."
+        return None
 
 def vendasPorLocalidade(dataInicial,dataFinal):
     consSqlString=f"""
@@ -71,7 +71,7 @@ def vendasPorLocalidade(dataInicial,dataFinal):
     if not df.empty:
         return df.to_string(index=False)
     else:
-        return "Sem dados para as datas selecionadas."
+        return None
 
 def clientesMaisAtivos(dataInicial,dataFinal):
     consSqlString=f"""
@@ -87,4 +87,4 @@ def clientesMaisAtivos(dataInicial,dataFinal):
     if not df.empty:
         return df.to_string(index=False)
     else:
-        return "Sem dados para as datas selecionadas."
+        return None
