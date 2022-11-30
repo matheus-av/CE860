@@ -1,5 +1,24 @@
 import numpy as np
 import sqlite3
+
+
+def checkChaves(campo,tabela,valor):
+    # Função para checar a existência de uma chave primária no banco
+    connection = sqlite3.connect('banco.db')
+    cursor = connection.cursor()
+    stringConsulta=f'select * from {tabela} WHERE {campo}={valor}'
+    cursor.execute(stringConsulta)
+    resultado = cursor.fetchall()
+    cursor.close()
+    connection.close()
+    if resultado !=[]:
+        #Existe o campo no banco
+        print("CPF já existente no banco de dados.")
+        return True
+    else:
+        #Não Existe o campo no banco
+        return False
+
 def validaCpf(cpf):
     listaDigitos = [int(digito) for digito in str(cpf) if digito.isdigit()]
     #Checando tamanho correto
@@ -19,6 +38,11 @@ def validaCpf(cpf):
         print("Erro: CPF Inválido.")
         return False
 
+    if checkChaves('cpf','Clientes',cpf):
+        return False
+    else:
+        return True
+
 def validaNulo(entrada):
     #Checar se o valor é nulo
     if entrada not in ["",np.nan,None]:
@@ -27,21 +51,6 @@ def validaNulo(entrada):
         print("Erro: Dado Nulo.")
         return False
 
-def checkChaves(campo,tabela,valor):
-    # Função para checar a existência de uma chave primária no banco
-    connection = sqlite3.connect('banco.db')
-    cursor = connection.cursor()
-    stringConsulta=f'select * from {tabela} WHERE {campo}={valor}'
-    cursor.execute(stringConsulta)
-    resultado = cursor.fetchall()
-    cursor.close()
-    connection.close()
-    if resultado !=[]:
-        #Existe o campo no banco
-        return False
-    else:
-        #Não Existe o campo no banco
-        return True
 
 def checkQuantidades(quantidades):
     #Validar entrada de quantidades

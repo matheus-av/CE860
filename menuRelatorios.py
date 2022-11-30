@@ -22,8 +22,7 @@ def menuRelatorios():
         print('Opção inválida')
 
 def relatorioReceitaTotal():
-    return 0 #FAZER
-
+    return 0  # FAZER
 def vendasPorLocalidade():
     return 0 #FAZER
 
@@ -31,4 +30,6 @@ def produtosMaisVendidos():
     return 0 #FAZER
 
 def lucrosCustosTotais():
+    return 0 #FAZER
+def clientesMaisAtivos():
     return 0 #FAZER

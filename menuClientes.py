@@ -26,12 +26,12 @@ def menuClientes():
 
 def cadastrarCliente():
     cpf = input('Digite o CPF do cliente:')
-    while not validacoes.cpfValido(cpf):
+    while not validacoes.validaCpf(cpf):
         print('CPF inválido')
         cpf = input('Digite o CPF do cliente:')
 
     nome = input('Digite o NOME do cliente:')
-    while not validacoes.nomeValido(nome):
+    while not validacoes.validaNulo(nome):
         print('NOME inválido')
         nome = input('Digite o NOME do cliente:')
     
@@ -48,12 +48,12 @@ def consultarClientes():
 
 def atualizarCliente():
     cpf = input('Digite o CPF do cliente:')
-    while not validacoes.cpfValido(cpf):
+    while not validacoes.validaCpf(cpf):
         print('CPF inválido')
         cpf = input('Digite o CPF do cliente:')
 
     nome = input('Digite o NOME do cliente:')
-    while not validacoes.nomeValido(nome):
+    while not validacoes.validaNulo(nome):
         print('NOME inválido')
         nome = input('Digite o NOME do cliente:')
     
@@ -67,7 +67,7 @@ def atualizarCliente():
 
 def excluirCliente():
     cpf = input('Digite o CPF do cliente:')
-    while not validacoes.cpfValido(cpf):
+    while not validacoes.validaCpf(cpf):
         print('CPF inválido')
         cpf = input('Digite o CPF do cliente:')
 

@@ -31,7 +31,7 @@ def cadastrarProduto():
         cpf = input('Digite o SKU do produto:')
 
     nome = input('Digite o NOME do produto:')
-    while not validacoes.nomeValido(nome):
+    while not validacoes.validaNulo(nome):
         print('NOME inválido')
         nome = input('Digite o NOME do produto:')
     
@@ -58,7 +58,7 @@ def atualizarProduto():
         cpf = input('Digite o SKU do produto:')
 
     nome = input('Digite o NOME do produto:')
-    while not validacoes.nomeValido(nome):
+    while not validacoes.validaNulo(nome):
         print('NOME inválido')
         nome = input('Digite o NOME do produto:')
     
