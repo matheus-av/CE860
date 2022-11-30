@@ -4,7 +4,7 @@ import menuVendas
 import menuRelatorios
 
 def menuPrincipal():
-    while int(opcao) != 0:
+    while True:
         print('1 - Clientes')
         print('2 - Produtos')
         print('3 - Vendas')
@@ -12,14 +12,19 @@ def menuPrincipal():
         print('0 - Sair')
 
         opcao = input('Digite o número de uma opção:')
+        
 
-        if int(opcao) == 1:
+        if opcao == "1":
             menuClientes()
-        elif int(opcao) == 2:
+        elif opcao == "2":
             menuProdutos()
-        elif int(opcao) == 3:
+        elif opcao == "3":
             menuVendas()
-        elif int(opcao) == 4:
+        elif opcao == "4":
             menuRelatorios()
-        elif int(opcao) != 0:
+        elif opcao == "0":
+            print('Programa finalizado')
+            break
+        else:
             print('Opção inválida')
+            
