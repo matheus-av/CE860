@@ -6,7 +6,7 @@ def menuClientes():
         print('1 - Cadastrar Cliente')
         print('2 - Consultar Clientes')
         print('3 - Atualizar Cliente')
-        print('4 - Excluír Cliente')
+        print('4 - Excluir Cliente')
         print('0 - Sair')
 
         opcao = input('Digite o número de uma opção:')
